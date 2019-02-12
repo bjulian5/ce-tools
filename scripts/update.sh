@@ -1,6 +1,6 @@
-cd $YEXT && git pull && glock sync yext && make &
+cd $YEXT && git co master && git pull && glock sync yext && make &
 
-cd $CONGO && git pull && glock sync congo && glock sync yext && make &
+cd $CONGO && git co master && git pull && glock sync congo && glock sync yext && make &
 
 cd ~/repo/generator-ysp && git pull &
 
