@@ -12,9 +12,7 @@ cd ~/repo/yext-ce-tools && git pull &
 
 brew upgrade &
 
-npm i -g npm &
-
-npm i -g bower &
+npm i -g npm && npm i -g bower &
 
 pip install --upgrade pip --user &
 
