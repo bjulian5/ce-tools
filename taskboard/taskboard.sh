@@ -160,6 +160,13 @@ close-task() {
 	fi
 }
 
+open_jira_task() {
+    if [[ "$jiranum" ]]
+	then
+	    open "https://yexttest.atlassian.net/browse/$jiranum"
+	fi
+}
+
 more_options() {
 	menu "\
 E: Enable/Disable TaskSwap
@@ -279,7 +286,8 @@ while :
 do
 	menu "\
 Q: Quit TaskBoard | N: New Task       | X: Close Selected
-[Enter]: Activate/Deactivate Selected | M: More Options" "$(load_items "$ITEMS_DIR")" $selected 'Q' 'N' 'X' 'M'
+[Enter]: Activate/Deactivate Selected | M: More Options
+O: Open Associated Task in JIRA       | " "$(load_items "$ITEMS_DIR")" $selected 'Q' 'N' 'X' 'M' 'O'
 
 	selected=$menu_selected
 	jiranum="$(echo "${menu_value:1}" | cut -d ' ' -f 1)"
@@ -292,5 +300,6 @@ Q: Quit TaskBoard | N: New Task       | X: Close Selected
 		'N' ) new-task;;
 		'X' ) close-task;;
 		'M' ) more_options;;
+		'O' ) open_jira_task;;
 	esac
 done
